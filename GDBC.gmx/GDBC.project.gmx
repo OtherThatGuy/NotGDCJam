@@ -6,27 +6,52 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_score</sprite>
+    <sprites name="music_game">
+      <sprite>sprites\spr_projectile</sprite>
+      <sprite>sprites\spr_notes</sprite>
+      <sprite>sprites\spr_ship</sprite>
+    </sprites>
+    <sprites name="code_game">
+      <sprite>sprites\spr_score</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\draw_diamond.gml</script>
-    <script>scripts\draw_true_circle.gml</script>
-    <script>scripts\draw_card.gml</script>
-    <script>scripts\draw_pentagon.gml</script>
-    <script>scripts\Wave.gml</script>
-    <script>scripts\clean_cards.gml</script>
-    <script>scripts\draw_centered_triangle.gml</script>
+    <script>scripts\scr_startup.gml</script>
+    <scripts name="drawing">
+      <script>scripts\draw_diamond.gml</script>
+      <script>scripts\draw_true_circle.gml</script>
+      <script>scripts\draw_pentagon.gml</script>
+      <script>scripts\draw_centered_triangle.gml</script>
+      <script>scripts\draw_card.gml</script>
+      <script>scripts\draw_notes.gml</script>
+    </scripts>
+    <scripts name="helpers">
+      <script>scripts\Chance.gml</script>
+      <script>scripts\Wave.gml</script>
+    </scripts>
+    <scripts name="logic">
+      <script>scripts\pick_jingle.gml</script>
+      <script>scripts\clean_cards.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_board</object>
+    <objects name="music_game">
+      <object>objects\obj_bullet</object>
+      <object>objects\obj_notes</object>
+      <object>objects\obj_music</object>
+    </objects>
+    <objects name="code_game">
+      <object>objects\obj_board</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\roomMusic</room>
+    <room>rooms\roomCode</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

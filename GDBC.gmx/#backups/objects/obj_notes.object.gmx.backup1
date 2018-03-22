@@ -1,0 +1,25 @@
+// 2018-03-20 21:13:28
+#event create
+note_id = choose(note.note_a,note.note_b,note.note_c,note.note_d, note.note_e, note.note_f, note.note_g, note.note_h);
+image_index = note_id;
+target = obj_music;
+image_speed = 0;
+
+#event step
+x -= 5;
+
+if (place_meeting(x,y,obj_bullet)) {
+    
+    if (instance_exists(target)) {
+        if (note_id = target.notes[target.current_note]) {
+            target.current_note += 1;
+        }
+        
+        instance_destroy();
+    }
+    
+}
+
+if (x < 64) {
+ instance_destroy();
+}

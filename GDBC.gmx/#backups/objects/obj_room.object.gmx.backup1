@@ -1,0 +1,41 @@
+// 2018-03-22 10:15:28
+#event create
+if (global.project_name = "") {
+    enter_name = true;
+} else {
+    enter_name = false;
+}
+
+name_string = "";
+limit = 30;
+
+name_box_x = display_get_gui_width() - 64;
+name_box_y = display_get_gui_height() - 64;
+
+#event step
+//input project name
+name_string = keyboard_string;
+
+if (enter_name == true and name_string != "") {
+    
+    if (keyboard_check_pressed(vk_enter)) {
+        global.project_name = name_string;
+        name_string = "";
+        enter_name = false;
+    }
+    
+}
+
+#event draw_gui
+
+if (enter_name = true) {
+    draw_set_circle_precision(16);
+    
+    draw_roundrect_color(64,64,name_box_x, name_box_y, c_black,c_black,true);
+    draw_roundrect_color(64,64,name_box_x, name_box_y, c_white,c_white,true);
+    draw_set_font(fnt_1);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_center);
+    
+    
+}

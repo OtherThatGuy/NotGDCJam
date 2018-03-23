@@ -48,8 +48,10 @@
     <objects name="code_game">
       <object>objects\obj_board</object>
     </objects>
+    <object>objects\obj_room</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\roomMain</room>
     <room>rooms\roomMusic</room>
     <room>rooms\roomCode</room>
   </rooms>

@@ -4,7 +4,9 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_bootup</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="music_game">
       <sprite>sprites\spr_projectile</sprite>
@@ -14,8 +16,15 @@
     <sprites name="code_game">
       <sprite>sprites\spr_score</sprite>
     </sprites>
+    <sprites name="art_game">
+      <sprite>sprites\sCanvas</sprite>
+    </sprites>
+    <sprite>sprites\spr_laptop</sprite>
+    <sprite>sprites\spr_icons</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_desk</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_startup.gml</script>
@@ -35,11 +44,14 @@
       <script>scripts\pick_jingle.gml</script>
       <script>scripts\clean_cards.gml</script>
     </scripts>
+    <script>scripts\scr_inCanvas.gml</script>
+    <script>scripts\scr_changeRoom.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
   </fonts>
   <objects name="objects">
+    <object>objects\Manager</object>
     <objects name="music_game">
       <object>objects\obj_bullet</object>
       <object>objects\obj_notes</object>
@@ -48,12 +60,31 @@
     <objects name="code_game">
       <object>objects\obj_board</object>
     </objects>
+    <objects name="art_game">
+      <object>objects\oBrush</object>
+      <object>objects\oButton</object>
+      <object>objects\oCanvas</object>
+      <object>objects\oColorPreview</object>
+      <object>objects\oColorWheel</object>
+      <object>objects\oHueSlider</object>
+      <object>objects\oSatSlider</object>
+      <object>objects\oSizeSlider</object>
+      <object>objects\oSlider</object>
+      <object>objects\oSmoothButton</object>
+      <object>objects\oStroke</object>
+      <object>objects\oUndoButton</object>
+      <object>objects\oValSlider</object>
+    </objects>
     <object>objects\obj_room</object>
+    <object>objects\obj_laptop</object>
+    <object>objects\obj_changeRoom</object>
+    <object>objects\obj_icon</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomMain</room>
     <room>rooms\roomMusic</room>
     <room>rooms\roomCode</room>
+    <room>rooms\roomDraw</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

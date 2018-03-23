@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>Manager</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,21 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.project_name = "") {
-    enter_name = true;
-} else {
-    enter_name = false;
-}
+            <string>x=mouse_x
+y=mouse_y
 
-name_string = "";
-limit = 50;
+size=4
+stab=8
+frq=8
+
+
+lastx=x
+lasty=y
+
+dot=0
+last=0
+stroke=id
+
+drawing=false
+drawStart=false
+
+global.color=c_black
+
+mouseDraw=true
 
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 display_set_gui_size(room_width,room_height)
 
-name_box_x = display_get_gui_width() - 64;
-name_box_y = display_get_gui_height() - 64;
 </string>
           </argument>
         </arguments>
@@ -62,28 +73,99 @@ name_box_y = display_get_gui_height() - 64;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//input project name
-if (string_length(keyboard_string) &lt; limit) {
-name_string = keyboard_string;
-} else {
- keyboard_string = name_string;
+            <string>///Position
+if drawing{
+    x=clamp((mouse_x+x*stab)/(1+stab),0,room_width)
+    y=clamp((mouse_y+y*stab)/(1+stab),0,room_height)
+}
+else{
+    x=clamp(mouse_x,0,room_width)
+    y=clamp(mouse_y,0,room_height)
+}
+mouseDraw=true
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Variable Changing
+
+size=clamp(size,0,50)
+stab=clamp(stab,1,64)
+frq=clamp(frq,4,64)
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>oBrush</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Drawing
+
+drawingStart=false
+if mouse_check_button_pressed(mb_left)&amp;&amp;scr_inCanvas(){
+    if drawing=false drawingStart=true
+    if drawingStart=true drawing=true
+}
+if mouse_check_button_released(mb_left)||!scr_inCanvas() drawing=false
+
+if drawingStart{
+
+    stroke=instance_create(x,y,oStroke)
+    stroke.size=size
+    stroke.color=global.color
+}
+if drawing{
+    if distance_to_point(lastx,lasty)&gt;=frq{
+        if !instance_exists(stroke)||stroke=0 stroke=instance_create(x,y,oStroke)
+        stroke.length++
+        stroke.dotx[stroke.length]=x
+        stroke.doty[stroke.length]=y
+        lastx=x
+        lasty=y
+    }
+}
+else{
+    lastx=x
+    lasty=y
 }
 
-if (enter_name == true and name_string != "") {
-    
-    if (keyboard_check_pressed(vk_enter)) {
-        global.project_name = name_string;
-        name_string = "";
-        enter_name = false;
-    }
-    
-}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -100,31 +182,13 @@ if (enter_name == true and name_string != "") {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(1);
+            <string>draw_set_color(global.color)
 
+draw_circle(x,y,size,true)
+draw_circle(x,y,size+0.5,true)
+if mouseDraw draw_circle(mouse_x,mouse_y,2,false)
 
-if (enter_name = true) {
-    draw_set_circle_precision(32);
-    draw_set_alpha(0.5);
-    draw_rectangle_colour(0,0,1280, 720, c_black,c_black,c_black,c_black, false);
-    draw_set_alpha(1);
-    
-    var width = 1280 / 2;
-    
-    draw_roundrect_color(64,64,name_box_x, name_box_y, c_black,c_black,true);
-    draw_roundrect_color(64,64,name_box_x, name_box_y, c_white,c_white,false);
-    draw_set_font(fnt_1);
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_center);
-    draw_text_color(width, 128, "Input the name of your project.",c_black,c_black,c_black,c_black,1);
-    draw_text_color(width, name_box_y / 2, name_string, c_black, c_black, c_black, c_black,1);
-    draw_text_color(width, name_box_y-64, "Press [enter] to accept.", c_black, c_black, c_black, c_black,1);
-    
-    
-    
-    
-    
-}
+draw_set_color(c_black)
 </string>
           </argument>
         </arguments>

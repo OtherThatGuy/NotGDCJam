@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>Manager</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,21 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.project_name = "") {
-    enter_name = true;
-} else {
-    enter_name = false;
-}
+            <string>pos=50
+top=100
+bottom=0
+tool="TEST"
 
-name_string = "";
-limit = 50;
+drag=false
 
-draw_set_halign(fa_center)
-draw_set_valign(fa_middle)
-display_set_gui_size(room_width,room_height)
 
-name_box_x = display_get_gui_width() - 64;
-name_box_y = display_get_gui_height() - 64;
 </string>
           </argument>
         </arguments>
@@ -62,28 +55,20 @@ name_box_y = display_get_gui_height() - 64;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//input project name
-if (string_length(keyboard_string) &lt; limit) {
-name_string = keyboard_string;
-} else {
- keyboard_string = name_string;
+            <string>if (mouse_x&gt;=x&amp;&amp;mouse_x&lt;=x+16)&amp;&amp;(mouse_y&lt;=y&amp;&amp;mouse_y&gt;=y-top){
+    if mouse_check_button_pressed(mb_left) drag=true
+    if drag pos=(y-mouse_y)
 }
+else drag=false
+pos = clamp(pos,bottom,top)
 
-if (enter_name == true and name_string != "") {
-    
-    if (keyboard_check_pressed(vk_enter)) {
-        global.project_name = name_string;
-        name_string = "";
-        enter_name = false;
-    }
-    
-}
+if mouse_check_button_released(mb_left) drag=false
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -100,31 +85,16 @@ if (enter_name == true and name_string != "") {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(1);
+            <string>
 
+draw_rectangle_colour(x,y+1,x+16,y-(top)-1,c_gray,c_gray,c_gray,c_gray,true)
+//draw_line_colour(x+8,y-2,x+8,(y-top)+2,c_gray,c_gray)
+draw_rectangle_colour(x+1,y-(pos)+4,x+15,y-(pos)-4,c_blue,c_blue,c_blue,c_blue,false)
 
-if (enter_name = true) {
-    draw_set_circle_precision(32);
-    draw_set_alpha(0.5);
-    draw_rectangle_colour(0,0,1280, 720, c_black,c_black,c_black,c_black, false);
-    draw_set_alpha(1);
-    
-    var width = 1280 / 2;
-    
-    draw_roundrect_color(64,64,name_box_x, name_box_y, c_black,c_black,true);
-    draw_roundrect_color(64,64,name_box_x, name_box_y, c_white,c_white,false);
-    draw_set_font(fnt_1);
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_center);
-    draw_text_color(width, 128, "Input the name of your project.",c_black,c_black,c_black,c_black,1);
-    draw_text_color(width, name_box_y / 2, name_string, c_black, c_black, c_black, c_black,1);
-    draw_text_color(width, name_box_y-64, "Press [enter] to accept.", c_black, c_black, c_black, c_black,1);
-    
-    
-    
-    
-    
-}
+draw_set_alpha(0.5)
+for(i=1;i&lt;=string_length(tool);i++)draw_text(x+8,y-(top)+(i*12),string_char_at(string(tool),i))
+draw_text(x+8,y-(top)-6,string(pos))
+draw_set_alpha(1)
 </string>
           </argument>
         </arguments>

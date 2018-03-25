@@ -10,14 +10,14 @@
     <sound>sound\snd_song_2</sound>
     <sound>sound\snd_song_3</sound>
     <sounds name="notes">
-      <sound>sound\sound4_note1</sound>
-      <sound>sound\sound5_note2</sound>
-      <sound>sound\sound6_note3</sound>
-      <sound>sound\sound7_note4</sound>
-      <sound>sound\sound8_note5</sound>
-      <sound>sound\sound9_note6</sound>
-      <sound>sound\sound10_note7</sound>
-      <sound>sound\sound11_note8</sound>
+      <sound>sound\snd_note1</sound>
+      <sound>sound\snd_note2</sound>
+      <sound>sound\snd_note3</sound>
+      <sound>sound\snd_note4</sound>
+      <sound>sound\snd_note5</sound>
+      <sound>sound\snd_note6</sound>
+      <sound>sound\snd_note7</sound>
+      <sound>sound\snd_note8</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -36,10 +36,13 @@
     <sprite>sprites\spr_icons</sprite>
     <sprite>sprites\spr_gameNoPic</sprite>
     <sprite>sprites\spr_cutscene1</sprite>
+    <sprite>sprites\spr_ending</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_desk</background>
     <background>background\bg_results</background>
+    <background>background\bg_music</background>
+    <background>background\bg_publish</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -67,9 +70,15 @@
     <script>scripts\theme_return.gml</script>
     <script>scripts\genre_return.gml</script>
     <script>scripts\scr_endDay.gml</script>
+    <script>scripts\scr_getRank.gml</script>
+    <script>scripts\scr_getRankString.gml</script>
+    <script>scripts\scr_noteID.gml</script>
+    <script>scripts\scr_checkCombo.gml</script>
+    <script>scripts\scrOutlinedText.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_highlight.shader</shader>
+    <shader type="GLSLES">shaders\shader_white.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_1</font>
@@ -111,13 +120,16 @@
     <object>objects\obj_game</object>
     <object>objects\obj_publishButton</object>
     <object>objects\obj_cutscene</object>
+    <object>objects\obj_ending</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\roomCutscene</room>
     <room>rooms\roomRoom</room>
     <room>rooms\roomMain</room>
     <room>rooms\roomCode</room>
     <room>rooms\roomStats</room>
     <room>rooms\roomResults</room>
+    <room>rooms\roomEnding</room>
     <room>rooms\roomMusic</room>
     <room>rooms\roomDraw</room>
   </rooms>

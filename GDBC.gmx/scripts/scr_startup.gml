@@ -15,3 +15,5 @@ global.genre = -1;
 
 global.gameArt=spr_gameNoPic
 
+global.money = 0;
+

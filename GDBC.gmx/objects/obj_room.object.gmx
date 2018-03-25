@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.project_name = "") {
+            <string>
+
+if (global.project_name = "") {
     enter_name = true;
 } else {
     enter_name = false;
@@ -174,6 +176,11 @@ if (enter_name == true and name_string != "" and current_theme != -1 and current
     }
     
 }
+
+if (global.days_left &lt;= 0) {
+ scr_changeRoom(roomEnding);
+}
+
 </string>
           </argument>
         </arguments>

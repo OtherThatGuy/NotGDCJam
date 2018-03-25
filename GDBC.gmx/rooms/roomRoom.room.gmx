@@ -53,10 +53,10 @@
   <instances>
     <instance objName="obj_room" x="0" y="0" name="inst_99C68061" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_laptop" x="0" y="0" name="inst_605EC16E" locked="-1" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="obj_icon" x="512" y="384" name="inst_F66CAA01" locked="0" code="myRoom=roomCode&#xA;image_index=1&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_icon" x="320" y="384" name="inst_B19B520C" locked="0" code="myRoom=roomDraw&#xA;image_index=0&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_icon" x="704" y="384" name="inst_95A3B41B" locked="0" code="myRoom=roomMusic&#xA;image_index=2" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_icon" x="896" y="384" name="inst_E2ECED8C" locked="0" code="myRoom=roomStats&#xA;image_index=3&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icon" x="512" y="384" name="inst_F66CAA01" locked="0" code="myRoom=roomCode&#xA;image_index=1&#xA;text=&quot;Work on coding&quot;&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icon" x="320" y="384" name="inst_B19B520C" locked="0" code="myRoom=roomDraw&#xA;image_index=0&#xA;text=&quot;Work on art&quot;&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icon" x="704" y="384" name="inst_95A3B41B" locked="0" code="myRoom=roomMusic&#xA;image_index=2&#xA;text=&quot;Work on music&quot;&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_icon" x="896" y="384" name="inst_E2ECED8C" locked="0" code="myRoom=roomStats&#xA;image_index=3&#xA;text=&quot;Project stats and publishing&quot;&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

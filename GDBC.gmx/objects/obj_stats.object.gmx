@@ -89,6 +89,7 @@ draw_text_color(78, 256, "Theme: " + string(theme_return(global.theme)), c_black
 draw_text_color(78, 288, "Coding points: " + string(global.coding_points), c_black, c_black, c_black, c_black, 1);
 draw_text_color(78, 320, "Music points: " + string(global.music_points), c_black, c_black, c_black, c_black, 1);
 draw_text_color(78, 352, "Art points: " + string(global.art_points), c_black, c_black, c_black, c_black, 1);
+draw_text_color(78, 416, "Money: " + string(global.money) + "$ (You need 100$!)", c_black, c_black, c_black, c_black, 1);
 draw_round_button(640, name_box_y-64, 256, 36, "Accept", c_black, c_white, accept);
 </string>
           </argument>

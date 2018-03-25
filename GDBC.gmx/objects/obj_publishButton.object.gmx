@@ -54,8 +54,7 @@ tool="Publish"
             <string>if !on{
     event_inherited()
     if on{
-        instance_create(0,0,obj_game)
-        scr_endDay()
+        scr_changeRoom(roomResults);
     }
 }
 </string>

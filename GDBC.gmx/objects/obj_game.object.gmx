@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>-1</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>Manager</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,14 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index=global.gameArt
+            <string>name_box_x = display_get_gui_width() - 64;
+name_box_y = display_get_gui_height() - 64;
+
+sprite_index=global.gameArt
 if sprite_index!=spr_gameNoPic{
     image_xscale/=10
     image_yscale/=10
 }
-coding=global.coding_points/1000
-music=global.music_points/1000
-art=global.art_points/1000
+coding=scr_getRank(global.coding_points);
+music=scr_getRank(global.music_points);
+art=scr_getRank(global.art_points);
 
 name=global.project_name
 
@@ -41,7 +44,15 @@ genre=global.genre
 
 sales=0
 
-stars=(coding+music*2+art*3)/30
+stars=(coding+music+art+1000)/1000;
+
+if (scr_checkCombo(theme, genre)) {
+sales= 3 * stars;
+} else {
+ sales= 2 * stars;
+}
+
+global.money += sales;
 
 
 
@@ -53,6 +64,33 @@ global.project_name=""
 
 global.theme=-1
 global.genre=-1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>accept = collision_button(640, name_box_y-64, 128, 36);
+
+if (accept and mouse_check_button_pressed(mb_left)) {
+ scr_endDay();
+}
 </string>
           </argument>
         </arguments>
@@ -100,7 +138,26 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(32,32,string(stars))
+            <string>draw_roundrect_color(64,64,name_box_x, name_box_y, c_black,c_black,true);
+draw_roundrect_color(64,64,name_box_x, name_box_y, c_white,c_white,false);
+draw_set_font(fnt_1);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_text_color(640, 128, "Publish Results",c_black,c_black,c_black,c_black,1);
+draw_set_halign(fa_left);
+draw_text_color(78, 192, "Name: " + name, c_black, c_black, c_black, c_black, 1);
+if (scr_checkCombo(theme, genre)) {
+draw_text_color(78, 224, "Good genre and theme combo!", c_green, c_green, c_green, c_green, 1);
+} else {
+draw_text_color(78, 224, "Bad genre and theme combo!", c_red, c_red, c_red, c_red, 1);
+}
+draw_text_color(78, 256, "Rating: " + string(stars), c_black, c_black, c_black, c_black, 1);
+draw_text_color(78, 288, "Code rank: " + string(scr_getRankString(coding)), c_black, c_black, c_black, c_black, 1);
+draw_text_color(78, 320, "Music rank: " + string(scr_getRankString(music)), c_black, c_black, c_black, c_black, 1);
+draw_text_color(78, 352, "Art rank: " + string(scr_getRankString(art)), c_black, c_black, c_black, c_black, 1);
+draw_text_color(78, 416, "Money earned: " + string(global.money) + "$", c_black, c_black, c_black, c_black, 1);
+draw_text_color(78, 448, "Total amount of money: " + string(global.money) + "$", c_black, c_black, c_black, c_black, 1);
+draw_round_button(640, name_box_y-64, 256, 36, "Accept", c_black, c_white, accept);
 </string>
           </argument>
         </arguments>

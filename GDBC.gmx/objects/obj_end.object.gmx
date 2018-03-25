@@ -70,7 +70,7 @@ if (accept and mouse_check_button_pressed(mb_left)) {
 
 if (done) {
  if (give_points == false) {
-  global.art_points += 1000;
+  global.art_points += 3000;
   give_points = true;
  }
  
@@ -116,7 +116,7 @@ if (done) {
     draw_set_halign(fa_left);
     draw_set_valign(fa_center);
     draw_set_font(fnt_1);
-    draw_text_color(78, 192, "Points: " + string(1000), c_orange,c_orange, c_orange,c_orange, 1);
+    draw_text_color(78, 192, "Points: " + string(3000), c_orange,c_orange, c_orange,c_orange, 1);
     draw_text_color(78, 256, "Art points: " + string(global.art_points), c_orange,c_orange, c_orange,c_orange, 1);
     draw_round_button(640, name_box_y-64, 256, 36, "Accept", c_orange, c_white, accept2);
 } else {

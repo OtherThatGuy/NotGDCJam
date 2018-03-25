@@ -28,6 +28,7 @@
             <string>myRoom=room
 image_speed=0
 highlight = false;
+text = "";
 </string>
           </argument>
         </arguments>
@@ -104,6 +105,10 @@ highlight = false;
  shader_set(shader_highlight)
  draw_sprite_ext(sprite_index, image_index, x,y,image_xscale,image_yscale, 0,c_white,1);
  shader_reset();
+ draw_set_font(fnt_1);
+ draw_set_halign(fa_center);
+ draw_set_valign(fa_center);
+ scrOutlinedText(640,328,text,c_black, c_white);
 } else {
 draw_sprite_ext(sprite_index, image_index, x,y,image_xscale,image_yscale, 0,c_white,1);
 }

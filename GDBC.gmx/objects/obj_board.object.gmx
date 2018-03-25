@@ -74,7 +74,7 @@ selected_cards[2,0] = -1;
 selected_cards[2,1] = -1;
 
 //before going back timer
-max_timer = room_speed * 60;
+max_timer = room_speed * 70;
 timer = max_timer;
 done = false;
 gave_points = false;

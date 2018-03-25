@@ -3,7 +3,7 @@ var s_score = argument0;
 var return_score = 0;
 
 if (s_score >= 0) {
- s_score = 0;
+ return_score = 0;
 }
 
 if (s_score >= 2000) {

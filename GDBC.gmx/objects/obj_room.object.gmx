@@ -40,6 +40,81 @@ display_set_gui_size(room_width,room_height)
 
 name_box_x = display_get_gui_width() - 64;
 name_box_y = display_get_gui_height() - 64;
+
+//themes
+theme_buttons[0,0] = "Sci-fi"
+theme_buttons[0,1] = c_teal;
+
+theme_buttons[1,0] = "Fantasy"
+theme_buttons[1,1] = c_lime;
+
+theme_buttons[2,0] = "Comedy"
+theme_buttons[2,1] = c_yellow;
+
+theme_buttons[3,0] = "Horror"
+theme_buttons[3,1] = c_red;
+
+theme_buttons[4,0] = "Mystery"
+theme_buttons[4,1] = c_navy;
+
+//genres
+genre_buttons[0,0] = "Action"
+genre_buttons[0,1] = c_maroon;
+
+genre_buttons[1,0] = "RPG"
+genre_buttons[1,1] = c_green;
+
+genre_buttons[2,0] = "Strategy"
+genre_buttons[2,1] = c_blue;
+
+genre_buttons[3,0] = "Sim"
+genre_buttons[3,1] = c_purple;
+
+genre_buttons[4,0] = "Adventure"
+genre_buttons[4,1] = c_orange;
+
+
+current_theme = -1;
+current_genre = -1;
+
+paddle = "|";
+
+alarm[0] = room_speed / 2;
+
+width = 1280 / 2;
+
+accept = false;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (paddle == "|") {
+ paddle = " ";
+} else  { 
+ paddle = "|"
+} 
+
+alarm[0] = room_speed / 2;
 </string>
           </argument>
         </arguments>
@@ -62,17 +137,36 @@ name_box_y = display_get_gui_height() - 64;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//input project name
+            <string>for (var i = 0; i &lt; 5; i++) {
+ theme[i] = collision_button( 256 , 256 + (36 * i),128, 32);
+ genre[i] = collision_button( name_box_x - 192 , 256 + (36 * i),128, 32);
+ 
+ if (theme[i] and mouse_check_button_pressed(mb_left)) {
+  current_theme = i;
+ }
+ 
+ if (genre[i] and mouse_check_button_pressed(mb_left)) {
+  current_genre = i;
+ }
+ 
+}
+
+accept = collision_button(width, name_box_y-64, 128, 32);
+
+
+//input project name
 if (string_length(keyboard_string) &lt; limit) {
 name_string = keyboard_string;
 } else {
  keyboard_string = name_string;
 }
 
-if (enter_name == true and name_string != "") {
+if (enter_name == true and name_string != "" and current_theme != -1 and current_genre != -1) {
     
-    if (keyboard_check_pressed(vk_enter)) {
+    if (accept and mouse_check_button_pressed(mb_left)) {
         global.project_name = name_string;
+        global.theme = current_theme;
+        global.genre = current_genre;
         name_string = "";
         enter_name = false;
     }
@@ -104,12 +198,10 @@ if (enter_name == true and name_string != "") {
 
 
 if (enter_name = true) {
-    draw_set_circle_precision(32);
+    draw_set_circle_precision(64);
     draw_set_alpha(0.5);
     draw_rectangle_colour(0,0,1280, 720, c_black,c_black,c_black,c_black, false);
     draw_set_alpha(1);
-    
-    var width = 1280 / 2;
     
     draw_roundrect_color(64,64,name_box_x, name_box_y, c_black,c_black,true);
     draw_roundrect_color(64,64,name_box_x, name_box_y, c_white,c_white,false);
@@ -117,8 +209,25 @@ if (enter_name = true) {
     draw_set_halign(fa_center);
     draw_set_valign(fa_center);
     draw_text_color(width, 128, "Input the name of your project.",c_black,c_black,c_black,c_black,1);
-    draw_text_color(width, name_box_y / 2, name_string, c_black, c_black, c_black, c_black,1);
-    draw_text_color(width, name_box_y-64, "Press [enter] to accept.", c_black, c_black, c_black, c_black,1);
+    draw_text_color(width, 176, name_string + paddle, c_black, c_black, c_black, c_black,1);
+    draw_set_font(fnt_2);
+    draw_text_colour(256, 224, "Select a theme",c_black,c_black,c_black,c_black,1);
+    for (var i = 0; i &lt; 5; i++) {
+    if (current_genre = i) {
+     draw_round_button(name_box_x - 192 , 256 + (36 * i),128, 32, genre_buttons[i,0] , c_white, genre_buttons[i,1], true);
+    } else {
+     draw_round_button(name_box_x - 192 , 256 + (36 * i),128, 32, genre_buttons[i,0] , c_white, genre_buttons[i,1], genre[i]);
+    }
+    
+    if (current_theme = i) {
+     draw_round_button(256 , 256 + (36 * i),128, 32, theme_buttons[i,0] , c_white, theme_buttons[i,1], true);
+    } else {
+     draw_round_button(256 , 256 + (36 * i),128, 32, theme_buttons[i,0] , c_white, theme_buttons[i,1], theme[i]);
+     }
+     
+    }
+    draw_text_colour(name_box_x - 192, 224, "Select a genre",c_black,c_black,c_black,c_black,1);
+    draw_round_button(width, name_box_y-64, 256, 32, "Accept", c_black, c_white, accept);
     
     
     

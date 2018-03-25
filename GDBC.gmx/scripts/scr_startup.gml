@@ -10,6 +10,6 @@ global.project_name = "";
 global.max_days = 30;
 global.days_left = global.max_days;
 
-global.theme = 0;
-global.genre = 0;
+global.theme = -1;
+global.genre = -1;
 

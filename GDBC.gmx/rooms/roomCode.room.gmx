@@ -29,7 +29,33 @@ enum size {
  medium = 1,
  big = 2
 
-}</code>
+}
+
+enum genres {
+ action = 0,
+ RPG = 1,
+ strategy = 2,
+ sim = 3,
+ adventure = 4
+}
+
+enum themes {
+ sci_fi = 0,
+ fantasy = 1,
+ comedy = 2,
+ horror = 3,
+ mystery = 4
+}
+
+enum ranks {
+ c = 0,
+ b = 1,
+ a = 2,
+ s = 3
+}
+
+audio_stop_all();
+audio_play_sound(snd_song_3, 5, true);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>8077096</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>draw_set_font(fnt_1);
+audio_stop_all();
+audio_play_sound(snd_song_1, 5, true);</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

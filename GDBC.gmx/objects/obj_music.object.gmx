@@ -77,6 +77,14 @@ notes[7] = -1;
 m_score = 0;
 
 pick_jingle(false);
+
+max_timer = room_speed * 60;
+timer = max_timer;
+done = false;
+gave_points = false;
+
+name_box_x = display_get_gui_width() - 64;
+name_box_y = display_get_gui_height() - 64;
 </string>
           </argument>
         </arguments>
@@ -100,12 +108,18 @@ pick_jingle(false);
           <argument>
             <kind>1</kind>
             <string>//timers
+if (timer != 0) {
+    timer = max(0,timer-1);
+} else {
+    done = true;    
+}
 
 //note shit
+if (!done) {
 if (note_spawn_timer = 0) {
     var rand = irandom_range(0,7);
     
-    if (Chance(0.55)) {
+    if (Chance(0.60)) {
      var cur_note = instance_create(room_width+64,lanes[rand],obj_notes);
      cur_note.note_id = notes[current_note];
     } else {
@@ -166,30 +180,25 @@ if (current_note &gt;= 8) {
     pick_jingle(true);
     
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_text(0,0,string(m_score));
-draw_notes(current_note);
+
+}
+
+if (done) {
+ if (gave_points == false) {
+  global.music_points += m_score * 1000;
+  global.days_left -= 1;
+  gave_points = true;
+ } 
+ 
+ accept = collision_button(640, name_box_y-64, 128, 36);
+ 
+ if (accept and mouse_check_button_pressed(mb_left)) {
+  scr_changeRoom(roomMain);
+ }
+ 
+}
+
+
 </string>
           </argument>
         </arguments>
@@ -212,7 +221,38 @@ draw_notes(current_note);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_ship,0, ship_x, ship_y);
+            <string>draw_rectangle_colour(0,512,1280, 720, c_black, c_black, c_black, c_black, false);
+draw_sprite(spr_ship,0, ship_x, ship_y);
+draw_text(0,0,string(m_score));
+draw_notes(current_note);
+draw_set_halign(fa_center);
+draw_set_valign(fa_bottom);
+draw_set_colour(c_white);
+var time = (timer / max_timer) * 100; 
+draw_healthbar(0,688, 1280, 720, time, c_black, c_red, c_lime, 0, false, false);
+draw_text(640,720,"Time Left");
+
+
+
+if (done) {
+    draw_set_circle_precision(32);
+    draw_set_alpha(0.5);
+    draw_rectangle_colour(0,0,1280, 720, c_black,c_black,c_black,c_black, false);
+    draw_set_alpha(1);
+    
+    
+    
+    draw_roundrect_color(64,64,name_box_x, name_box_y, c_purple,c_purple,true);
+    draw_roundrect_color(64,64,name_box_x, name_box_y, c_ltgray,c_ltgray,false);
+    draw_text_colour(640, 128, "Results", c_purple,c_purple, c_purple,c_purple, 1);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_center);
+    draw_set_font(fnt_1);
+    draw_text_color(78, 192, "Points: " + string(m_score), c_purple,c_purple, c_purple,c_purple, 1);
+    draw_text_color(78, 256, "Score: " + string(m_score * 1000), c_purple,c_purple, c_purple,c_purple, 1);
+    draw_text_color(78, 320, "Music points: " + string(global.music_points), c_purple,c_purple, c_purple,c_purple, 1);
+    draw_round_button(640, name_box_y-64, 256, 36, "Accept", c_purple, c_ltgray, accept);
+}
 </string>
           </argument>
         </arguments>

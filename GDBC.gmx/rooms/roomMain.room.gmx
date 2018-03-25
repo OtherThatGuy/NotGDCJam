@@ -8,9 +8,9 @@
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
-  <colour>12632256</colour>
-  <showcolour>0</showcolour>
-  <code></code>
+  <colour>0</colour>
+  <showcolour>-1</showcolour>
+  <code>audio_stop_all();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -31,7 +31,7 @@
     <yoffset>-80</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="bg_desk" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
+    <background visible="-1" foreground="0" name="" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -51,11 +51,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_room" x="0" y="0" name="inst_99C68061" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_laptop" x="0" y="0" name="inst_605EC16E" locked="-1" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="obj_icon" x="320" y="320" name="inst_F66CAA01" locked="0" code="myRoom=roomCode&#xA;image_index=1&#xA;" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="obj_icon" x="576" y="320" name="inst_B19B520C" locked="0" code="myRoom=roomDraw&#xA;image_index=0&#xA;" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
-    <instance objName="obj_icon" x="832" y="320" name="inst_95A3B41B" locked="0" code="myRoom=roomMusic&#xA;image_index=2&#xA;" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="obj_transition" x="0" y="0" name="inst_B2D77452" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

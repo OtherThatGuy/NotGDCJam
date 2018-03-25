@@ -1,0 +1,20 @@
+// 2018-03-23 23:06:29
+#event create
+name_box_x = display_get_gui_width() - 64;
+name_box_y = display_get_gui_height() - 64;
+
+#event draw
+draw_roundrect_color(64,64,name_box_x, name_box_y, c_black,c_black,true);
+draw_roundrect_color(64,64,name_box_x, name_box_y, c_white,c_white,false);
+draw_set_font(fnt_1);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_text_color(640, 128, "Project Statistics",c_black,c_black,c_black,c_black,1);
+draw_set_font(fnt_2);
+draw_set_halign(fa_left);
+draw_text_color(70, 192, "Name: " + global.project_name, c_black, c_black, c_black, c_black, 1);
+draw_text_color(70, 224, "Genre: " + genre_return(global.genre), c_black, c_black, c_black, c_black, 1);
+draw_text_color(70, 256, "Theme: " + theme_return(global.theme), c_black, c_black, c_black, c_black, 1);
+draw_text_color(70, 288, "Coding points: " + string(global.coding_points), c_black, c_black, c_black, c_black, 1);
+draw_text_color(70, 288, "Music points: " + string(global.music_points), c_black, c_black, c_black, c_black, 1);
+draw_text_color(70, 320, "Art points: " + string(global.art_points), c_black, c_black, c_black, c_black, 1);

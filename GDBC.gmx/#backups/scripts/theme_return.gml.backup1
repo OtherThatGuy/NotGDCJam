@@ -1,0 +1,7 @@
+// 2018-03-23 22:58:49
+///theme_return(theme)
+#args theme
+
+switch(theme) {
+ case themes.
+}

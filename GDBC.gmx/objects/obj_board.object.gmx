@@ -77,6 +77,13 @@ selected_cards[2,1] = -1;
 max_timer = room_speed * 60;
 timer = max_timer;
 done = false;
+gave_points = false;
+
+name_box_x = display_get_gui_width() - 64;
+name_box_y = display_get_gui_height() - 64;
+
+accept = false;
+
 </string>
           </argument>
         </arguments>
@@ -107,7 +114,7 @@ if (timer != 0) {
     
 }
 
-if (done) {
+if (!done) {
 //card highlighting
 bounce = Wave(-16,16,3,0);
 
@@ -219,6 +226,21 @@ if (mouse_check_button_pressed(mb_right)) {
 }
 
 }
+
+if (done) {
+ if (gave_points == false) {
+  global.coding_points += sets * 1000;
+  global.days_left -= 1;
+  gave_points = true;
+ } 
+ 
+ accept = collision_button(640, name_box_y-64, 128, 36);
+ 
+ if (accept and mouse_check_button_pressed(mb_left)) {
+  scr_changeRoom(roomMain);
+ }
+ 
+}
 </string>
           </argument>
         </arguments>
@@ -291,20 +313,28 @@ for(var i = 0; i &lt; 3; i++) {
 draw_set_halign(fa_center);
 draw_set_valign(fa_bottom);
 draw_set_colour(c_white);
-draw_text(640,720,"Press [Space] to reshuffle, [Right click] to deselect cards.");
-/*
-draw_card(first_row,first_column,shapes.octagon, colors.red ,size.big);
-draw_card(first_row,second_column,shapes.circle,colors.lime, size.medium);
-draw_card(first_row,third_column,shapes.diamond,colors.blue, size.small);
+var time = (timer / max_timer) * 100; 
+draw_healthbar(0,688, 1280, 720, time, c_black, c_red, c_lime, 0, false, false);
+draw_text(640,720,"Time Left");
 
-draw_card(second_row,first_column,shapes.octagon, colors.red ,size.big);
-draw_card(second_row,second_column,shapes.circle,colors.lime, size.medium);
-draw_card(second_row,third_column,shapes.diamond,colors.blue, size.small);
-
-draw_card(third_row,first_column,shapes.octagon, colors.red ,size.big);
-draw_card(third_row,second_column,shapes.circle,colors.lime, size.medium);
-draw_card(third_row,third_column,shapes.diamond,colors.blue, size.small);
-*/
+if (done) {
+    draw_set_circle_precision(32);
+    draw_set_alpha(0.5);
+    draw_rectangle_colour(0,0,1280, 720, c_black,c_black,c_black,c_black, false);
+    draw_set_alpha(1);
+    
+    
+    
+    draw_roundrect_color(64,64,name_box_x, name_box_y, c_lime,c_lime,true);
+    draw_roundrect_color(64,64,name_box_x, name_box_y, c_black,c_black,false);
+    draw_text_colour(640, 128, "Results", c_lime, c_lime, c_lime, c_lime, 1);
+    draw_set_halign(fa_left);
+    draw_set_font(fnt_1);
+    draw_text_color(78, 192, "Sets: " + string(sets), c_lime, c_lime, c_lime, c_lime, 1);
+    draw_text_color(78, 256, "Score: " + string(sets * 1000), c_lime, c_lime, c_lime, c_lime, 1);
+    draw_text_color(78, 320, "Coding points: " + string(global.coding_points), c_lime, c_lime, c_lime, c_lime, 1);
+    draw_round_button(640, name_box_y-64, 256, 36, "Accept", c_lime, c_black, accept);
+}
 </string>
           </argument>
         </arguments>

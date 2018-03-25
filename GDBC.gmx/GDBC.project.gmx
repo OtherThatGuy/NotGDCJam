@@ -34,6 +34,8 @@
     </sprites>
     <sprite>sprites\spr_laptop</sprite>
     <sprite>sprites\spr_icons</sprite>
+    <sprite>sprites\spr_gameNoPic</sprite>
+    <sprite>sprites\spr_cutscene1</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_desk</background>
@@ -64,6 +66,7 @@
     <script>scripts\collision_button.gml</script>
     <script>scripts\theme_return.gml</script>
     <script>scripts\genre_return.gml</script>
+    <script>scripts\scr_endDay.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shader_highlight.shader</shader>
@@ -105,6 +108,9 @@
     <object>objects\obj_icon</object>
     <object>objects\obj_stats</object>
     <object>objects\obj_transition</object>
+    <object>objects\obj_game</object>
+    <object>objects\obj_publishButton</object>
+    <object>objects\obj_cutscene</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomRoom</room>

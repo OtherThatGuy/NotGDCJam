@@ -13,3 +13,5 @@ global.days_left = global.max_days;
 global.theme = -1;
 global.genre = -1;
 
+global.gameArt=spr_gameNoPic
+

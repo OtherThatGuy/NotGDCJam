@@ -63,6 +63,7 @@ accept = collision_button(x,y,width,height);
 
 if (accept and mouse_check_button_pressed(mb_left)) {
  done = true;
+ global.gameArt=sprite_create_from_surface(application_surface,288,32,576,640,0,0,0,0)
 }
 
 }
@@ -70,14 +71,13 @@ if (accept and mouse_check_button_pressed(mb_left)) {
 if (done) {
  if (give_points == false) {
   global.art_points += 1000;
-  global.days_left -= 1;
   give_points = true;
  }
  
  accept2 = collision_button(640, name_box_y-64, 128, 36);
  
  if (accept2 and mouse_check_button_pressed(mb_left)) {
-  scr_changeRoom(roomMain);
+  scr_endDay()
  }
 }
 </string>

@@ -18,7 +18,7 @@ audio_play_sound(snd_song_2, 5, true);</code>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1008</w>
+    <w>1000</w>
     <h>600</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
@@ -28,9 +28,9 @@ audio_play_sound(snd_song_2, 5, true);</code>
     <showViews>0</showViews>
     <deleteUnderlyingObj>-1</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>1</page>
-    <xoffset>-37</xoffset>
-    <yoffset>-58</yoffset>
+    <page>0</page>
+    <xoffset>-61</xoffset>
+    <yoffset>-86</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="bg_results" x="0" y="0" htiled="-1" vtiled="-1" hspeed="1" vspeed="1" stretch="0"/>
@@ -54,7 +54,7 @@ audio_play_sound(snd_song_2, 5, true);</code>
   </views>
   <instances>
     <instance objName="oBrush" x="0" y="0" name="inst_28668B83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oCanvas" x="288" y="32" name="inst_2829B0B2" locked="0" code="" scaleX="18" scaleY="21" colour="4294967295" rotation="0"/>
+    <instance objName="oCanvas" x="288" y="32" name="inst_2829B0B2" locked="0" code="" scaleX="18" scaleY="20" colour="4294967295" rotation="0"/>
     <instance objName="oColorPreview" x="96" y="128" name="inst_F1CE2E83" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSizeSlider" x="32" y="480" name="inst_5E6D94F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oHueSlider" x="64" y="480" name="inst_B0B39CA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

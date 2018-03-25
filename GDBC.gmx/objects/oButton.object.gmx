@@ -77,13 +77,13 @@ w=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(0.5+on)
+            <string>
+draw_rectangle_colour(x,y,x+16*w,y-16*h,c_gray,c_gray,c_gray,c_gray,0)
+if on draw_rectangle_colour(x,y,x+16*w,y-16*h,c_dkgray,c_dkgray,c_dkgray,c_dkgray,0)
+
+draw_set_alpha(0.5+on)
 draw_text(x+8*w,y-8*h,string(tool))
 draw_set_alpha(1)
-
-draw_rectangle_colour(x,y,x+16*w,y-16*h,c_gray,c_gray,c_gray,c_gray,true)
-if on draw_rectangle_colour(x,y,x+16*w,y-16*h,c_dkgray,c_dkgray,c_dkgray,c_dkgray,true)
-
 </string>
           </argument>
         </arguments>

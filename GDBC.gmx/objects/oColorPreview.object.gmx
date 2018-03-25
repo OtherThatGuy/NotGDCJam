@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_circle_colour(x,y,oBrush.size,global.color,global.color,0)
-draw_rectangle(x-50,y-50,x+50,y+50,1)
+            <string>draw_rectangle_colour(x-50,y-50,x+50,y+50,c_gray,c_gray,c_gray,c_gray,0)
+draw_circle_colour(x,y,oBrush.size,global.color,global.color,0)
 </string>
           </argument>
         </arguments>

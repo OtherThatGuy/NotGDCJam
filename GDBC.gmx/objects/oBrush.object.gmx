@@ -109,7 +109,7 @@ mouseDraw=true
 size=clamp(size,0,50)
 stab=clamp(stab,1,64)
 frq=clamp(frq,4,64)
-
+depth=(-instance_number(oStroke)/10)-1
 </string>
           </argument>
         </arguments>

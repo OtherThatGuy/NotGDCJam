@@ -47,12 +47,12 @@ sales=0
 stars=(coding+music+art+1000)/1000;
 
 if (scr_checkCombo(theme, genre)) {
-sales= 3 * stars;
+sales= 3 * stars -5;
 } else {
- sales= 2 * stars;
+ sales= 2 * stars -5;
 }
 
-global.money += sales;
+global.money += max(sales,0);
 
 
 

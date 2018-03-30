@@ -121,6 +121,7 @@
     <object>objects\obj_publishButton</object>
     <object>objects\obj_cutscene</object>
     <object>objects\obj_ending</object>
+    <object>objects\obj_help</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomCutscene</room>

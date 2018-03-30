@@ -71,9 +71,9 @@ audio_play_sound(snd_song_3, 5, true);</code>
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>1</page>
-    <xoffset>-80</xoffset>
-    <yoffset>-107</yoffset>
+    <page>0</page>
+    <xoffset>-24</xoffset>
+    <yoffset>30</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -97,6 +97,7 @@ audio_play_sound(snd_song_3, 5, true);</code>
   </views>
   <instances>
     <instance objName="obj_board" x="0" y="0" name="inst_876864BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_help" x="64" y="640" name="inst_638DBB89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
